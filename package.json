@@ -1,0 +1,33 @@
+{
+  "name": "MEAN-JobSearch",
+  "version": "1.0.0",
+  "description": "A job search engine built on the Indeed Job Search API",
+  "main": "server/server.js",
+  "engines": {
+    "node": "5.0.0",
+    "npm": "3.3.6"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon server/server.js",
+    "postinstall": "./node_modules/.bin/bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Salmonster/MEAN-JobSearch.git"
+  },
+  "author": "Salman Oskooi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Salmonster/MEAN-JobSearch/issues"
+  },
+  "homepage": "https://github.com/Salmonster/MEAN-JobSearch#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "4.3.1",
+    "morgan": "~1.6.1",
+    "nodemon": "^1.9.1",
+    "q": "^1.4.1"
+  }
+}
