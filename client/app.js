@@ -1,5 +1,7 @@
 // As our lead module, this must have the same name as 'ng-app' as specified in index.html
 // Placing 'ng-app' in index.html gives that view precedence
+// This module associates a controller with each view, so controllers don't need to be specified
+// in each view's html
 var app = angular.module('jobsearch', [
   'jobsearch.services',
   'jobsearch.jobfinder',
@@ -15,7 +17,7 @@ var app = angular.module('jobsearch', [
     controller: 'SearchController'
   })
   .state('admin', {
-    url: '/api/admin',
+    url: '/admin',
     templateUrl: 'views/admin.html',
     controller: 'AdminController'
   })

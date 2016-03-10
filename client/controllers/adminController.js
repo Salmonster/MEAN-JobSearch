@@ -1,6 +1,6 @@
 angular.module('jobsearch.admin', [])
 
-  .controller('AdminController', ['$rootScope', '$scope', '$http', 'Auth', function($rootScope, $scope, $http, Auth) { 
+  .controller('AdminController', ['$rootScope', '$scope', '$http', 'ApiCalls', function($rootScope, $scope, $http, ApiCalls) { 
 
   
     // if (!Auth.isAuth()) $location.path('/login')
