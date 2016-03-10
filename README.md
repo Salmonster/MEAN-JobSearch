@@ -1,2 +1,2 @@
 # MEAN-JobSearch
-A job search engine built on the Indeed Job Search API
+A job search engine built on Indeed's Job Search API
