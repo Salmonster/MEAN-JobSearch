@@ -5,12 +5,11 @@
   <button ng-click='submit()'>Search Now</button>
   <h2 ng-show='search'>Results</h2>
   <!-- The following will have to be tailored to Indeed Job Search API's response data -->
-  <!-- <div ng-model='data.jobs'>
-    <div class='job' ng-repeat='job in data.jobs | filter:jobTitle | orderBy:'date' | filter:location'>
-      <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
-      <div class='title'>{{link.title}}</div>
-      <div class='original'>{{link.url}}</div>
-      <a href='{{link.base_url}}/api/links/{{link.code}}'>{{link.base_url}}/api/links/{{link.code}}</a>
+  <div ng-model='jobs'>
+    <div class='job' ng-repeat='job in jobs'>
+      <div class='title'>{{job.jobtitle}}</div>
+      <div class='company'>{{job.company}}</div>
+      <div class='location'>{{job.formattedLocation}}</div>
     </div>
-  </div> -->
+  </div>
 </div>

@@ -11,27 +11,19 @@ db.once('open', function(callback) {
   console.log('Connected to MongoDB');
 });
 
-
-var jobSchema = mongoose.Schema({
-  jobProps: Array,
-  jobProperties: String,
-  stringifiedObject: { type: String, default: '{}' }
-});
-
 var adminSchema = mongoose.Schema({
-  stats: String,
-  hits: Number
+  searchTerm: String,
+  zipCode: Number,
+  time: Date,
+  ipAddress: String
 });
+
 
 var models = {
 
-  Jobs: mongoose.model('Jobs', jobSchema),
-  Admin: mongoose.model('Admin', adminSchema)
+  SearchLog: mongoose.model('SearchLog', adminSchema)
 
 }
 
 // Models need to be exported to controllers
 module.exports = models;
-
-// See http://stackoverflow.com/questions/23692996/how-could-i-bind-save-method-using-q-with-mongoose
-Jobs.save = Q.nbind(Jobs.save, Jobs);

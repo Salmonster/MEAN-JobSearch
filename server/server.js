@@ -11,6 +11,9 @@ app.set('port', (process.env.PORT || 3000));
 
 // Set up express formatting and http reporting.
 app.use(bodyParser.json());
+// app.use(require('body-parser').urlencoded({
+//   extended: true
+// }));
 app.use(morgan('dev'));
 
 // Redirect requests for local files to the 'client' directory
@@ -18,16 +21,13 @@ var assetFolder = Path.resolve(__dirname, '../client');
 app.use(express.static(assetFolder));
 
 // Initialize routers.
-// var userRouter = express.Router();
-// var adminRouter = express.Router();
+var searchLogRouter = express.Router();
 
 // Configure routers.
-// require('./server/admin/adminRoutes.js')(adminRouter);
-// require('./server/users/userRoutes.js')(userRouter);
+require('./searchLogs/searchLogRoutes.js')(searchLogRouter);
 
 // Set up route forwarding.
-// app.use('/api/admin', adminRouter);
-// app.use('/', userRouter);
+app.use('/api', searchLogRouter);
 
 // Handle uncaught errors.
 app.use(helpers.errorLogger);
