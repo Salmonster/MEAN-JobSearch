@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Q = require('q');
 var bcrypt   = require('bcrypt-nodejs');
 
 

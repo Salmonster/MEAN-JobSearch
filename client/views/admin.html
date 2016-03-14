@@ -1,15 +1,21 @@
-<div id='container' ng-controller='adminController'>
-  <!-- Your html here -->
-  <h2>Stats</h2>
-  <input name='searchBox' type='text' ng-model='data.search' placeholder='Enter HTML tracking code'>
-  <div ng-model='data.stats'>
-    <div class='stat' ng-repeat='stat in data.stats | filter:username | orderBy:'-visits' | filter:data.search'>
-      <div class='searchTerm'>{{stat.search}}</div>
-      <div class='zipCode'>{{stat.zip}}</div>
-      <div class='time'>{{stat.time}}</div>
-      <div class='ipAddress'>{{stat.ipAddress}}</div>
-      <!-- <a href='{{link.base_url}}/api/links/{{link.code}}'>{{link.base_url}}/api/links/{{link.code}}</a> -->
+<div id='container'>
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/'>Search Page</a></li>
+  </ul>
+  </div>
+  <h2>Tracking</h2>
+  <input type='text' ng-model='trackingScript' placeholder='Enter HTML tracking code' size=100>
+  <br><br>
+  <button ng-click='update()'>Update Tracking Code</button>
+  <br><br>
+  <h2>Usage Report</h2>
+  <div class='box' ng-model='stats'>
+    <div class='list' ng-repeat='stat in stats | orderBy : sortStats : true'>
+      <div><strong>Searched term:</strong> "{{stat.searchTerm}}"</div>
+      <div><strong>Searched zip code:</strong> {{stat.zipCode}}</div>
+      <div><strong>Time of search:</strong> {{stat.time}}</div>
+      <div><strong>User's IP address:</strong> {{stat.ipAddress}}</div>
     </div>
   </div>
-
 </div>

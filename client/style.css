@@ -1,14 +1,17 @@
 body {
   margin: 10px 10px 10px 10px;
-  /*margin-top: 10px;*/
   font-family: arial, sans-serif;
+  background-color: #FAFAFA;
 }
 
 a {
-  color: #FAFAFA;
-  /*color: #333;*/
+  color: #F1FE00;
   font-size: 14px;
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 h1 {
@@ -44,14 +47,54 @@ h1 {
 }
 
 .navigation li a:hover {
-  background-color: #009688;
-}
-
-.navigation li a.selected {
-  background-color: #ccc;
+  background-color: #9C73A9;
 }
 
 #container {
   clear: both;
   margin-top: 10px;
+}
+
+.box {
+  border: 1px solid #aaa;
+}
+
+.list {
+  margin: 25px;
+}
+
+a.url {
+  color: #673AB7;
+}
+
+.btf-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 20%;
+  max-width: 550px;
+  min-width: 330px;
+  height: auto;
+  z-index: 2000;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal {
+  border: 1px solid black;
+  background-color: #D3D3D3;
+  padding: 5px;
+}
+
+#modalStyle {
+  margin-left: 15%;
+}
+
+.modal-close {
+  position: absolute;
+  color: #000000;
+  top: 10px;
+  right: 10px;
 }

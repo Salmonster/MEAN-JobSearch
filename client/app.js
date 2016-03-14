@@ -6,7 +6,8 @@ var app = angular.module('jobsearch', [
   'jobsearch.services',
   'jobsearch.jobfinder',
   'jobsearch.admin',
-  'ui.router'
+  'ui.router',
+  'btford.modal'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');

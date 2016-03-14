@@ -12,6 +12,7 @@ var createSearch = Q.nbind(SearchLog.create, SearchLog),
 module.exports = {
 
   createSearchLog: function(req, res, next) {
+    // Adds search criteria and user's IP address into SearchLog database
     createSearch({
       searchTerm: req.body.jobTitle,
       zipCode: req.body.zipCode,
@@ -24,28 +25,30 @@ module.exports = {
     })
     .catch(function(err) {
       res.status(500);
-      res.send('createSearchLog error: ', err);
+      res.status(400).send(err);
     });
   },
 
-  signUp: function (req, res, next) {
-    // For one-time use...
-    var username = req.body.username;
-    var password = req.body.password;
-    var customScript = req.body.customScript;
-    createAdmin({
-      username: username,
-      password: password,
-      customScript: customScript
-    })
-    .then(function() {
-      res.sendStatus(201);
-    })
-    .catch(function(err) {
-      res.status(500);
-      res.send('signUp error: ', err);
-    });
-  },
+  // For one-time use...
+
+  // signUp: function (req, res, next) {
+  //   // Sign up an admin
+  //   var username = req.body.username;
+  //   var password = req.body.password;
+  //   var customScript = req.body.customScript;
+  //   createAdmin({
+  //     username: username,
+  //     password: password,
+  //     customScript: customScript
+  //   })
+  //   .then(function() {
+  //     res.sendStatus(201);
+  //   })
+  //   .catch(function(err) {
+  //     res.status(500);
+  //     res.status(400).send(err);
+  //   });
+  // },
 
   signIn: function(req, res, next) {
     // Checks admin credentials in Admin db
@@ -66,29 +69,29 @@ module.exports = {
         }
       })
       .fail(function(err) {
-        res.send('signIn error: ', err);
+        res.status(403).send(err);
       });
   },
 
   getLogs: function(req, res, next) {
-    // Retrieve saved data from searchlogs
+    // Retrieve saved data from SearchLog db
     findAllSearches()
       .then(function(results) {
         res.send(results);
       })
       .fail(function(err) {
-        res.send('getLogs error: ', err);
+        res.status(400).send(err);
       });
   },
 
   track: function(req, res, next) {
-    // Retrieve customScript from Admin db
+    // Retrieve custom script from Admin db
     findAdmin()
-      .then(function(results) {
-        res.send(results.customScript);
+      .then(function(result) {
+        res.send(result.customScript);
       })
       .fail(function(err) {
-        res.send('track error: ', err);
+        res.status(400).send(err);
       });
   },
 
@@ -102,11 +105,11 @@ module.exports = {
         })
         .catch(function(err) {
           res.status(500);
-          res.send('updateTracker updateScript error: ', err);
+          res.status(400).send(err);
         });
     })
     .fail(function(err) {
-      res.send('updateTracker findAdmin error: ', err);
+      res.status(400).send(err);
     });
   }
 

@@ -1,7 +1,7 @@
 <div id='container'>
   <div class='navigation'>
     <ul>
-      <li><a href='#/admin'>Admin Account</a></li>
+      <li ng-controller='modalControl'><a href ng-click='showModal()'>Admin Account</a></li>
     </ul>
   </div>
   <br>
@@ -9,11 +9,13 @@
   <input type='text' ng-model='searchTerms.zipCode' placeholder='Zip Code'>
   <button ng-click='submit()'>Search Now</button>
   <h2 ng-show='search'>Results</h2>
-  <div ng-model='jobs'>
-    <div class='job' ng-repeat='job in jobs'>
-      <div class='title'>{{job.jobtitle}}</div>
-      <div class='company'>{{job.company}}</div>
-      <div class='location'>{{job.formattedLocation}}</div>
+  <div class='box' ng-model='jobs' ng-show='search'>
+    <div class='list' ng-repeat='job in jobs'>
+      <div><strong>{{job.jobtitle}}</strong></div>
+      <div><em>{{job.company}}</em> -- posted {{job.formattedRelativeTime}}</div>
+      <!-- <br> -->
+      <div>{{job.formattedLocation}}</div>
+      <a class='url' ng-model='job.url' ng-href='{{job.url}}' target='_blank'>Click here for more info.</a>
     </div>
   </div>
 </div>
