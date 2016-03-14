@@ -17,11 +17,12 @@ module.exports = {
       searchTerm: req.body.jobTitle,
       zipCode: req.body.zipCode,
       time: new Date(),
-      ipAddress: res.connection.remoteAddress
+      ipAddress: req.connection.remoteAddress
     })
     .then(function() {
       res.status(201);
-      res.send(res.connection.remoteAddress);
+      console.log("req.connection.remoteAddress: ", req.connection.remoteAddress);
+      res.send(req.connection.remoteAddress);
     })
     .catch(function(err) {
       res.status(500);
