@@ -20,7 +20,7 @@ angular.module('jobsearch.services', [])
       // Angular's $http jsonp method (which accounts for browser protection against XSS) changes its generic JSON_CALLBACK function wrapper name to a name with periods (.) that the following (outdated?) URL doesn't work with
       // So we must use jQuery to get around this
       return $.ajax({
-        url: 'http://api.indeed.com/ads/apisearch?publisher=2878037053725137&format=json&q=' + searchTerms.jobTitle + '&l=' + searchTerms.zipCode + '&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=0&co=us&chnl=FJR&userip=' + userIP + '&useragent=Mozilla/%2F4.0%28Firefox%29&v=2',
+        url: 'https://api.indeed.com/ads/apisearch?publisher=2878037053725137&format=json&q=' + searchTerms.jobTitle + '&l=' + searchTerms.zipCode + '&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=0&co=us&chnl=FJR&userip=' + userIP + '&useragent=Mozilla/%2F4.0%28Firefox%29&v=2',
         dataType: 'jsonp',
         type: 'GET',
         success: function(res) {
