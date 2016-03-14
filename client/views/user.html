@@ -1,10 +1,14 @@
 <div id='container'>
-  <!-- <p>Check this out: {{ routeCheck }}</p> -->
+  <div class='navigation'>
+    <ul>
+      <li><a href='#/admin'>Admin Account</a></li>
+    </ul>
+  </div>
+  <br>
   <input type='text' ng-model='searchTerms.jobTitle' placeholder='Job Title'>
   <input type='text' ng-model='searchTerms.zipCode' placeholder='Zip Code'>
   <button ng-click='submit()'>Search Now</button>
   <h2 ng-show='search'>Results</h2>
-  <!-- The following will have to be tailored to Indeed Job Search API's response data -->
   <div ng-model='jobs'>
     <div class='job' ng-repeat='job in jobs'>
       <div class='title'>{{job.jobtitle}}</div>

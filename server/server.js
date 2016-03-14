@@ -3,9 +3,8 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var Path = require('path');
 var helpers = require('./helpers.js');
+var app = express();
 
-
-module.exports = app = express();
 
 app.set('port', (process.env.PORT || 3000));
 

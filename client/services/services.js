@@ -33,7 +33,7 @@ angular.module('jobsearch.services', [])
     })
   };
 
-  // Use the following methods in adminController
+  // TODO: Add this method to searchController to handle admin login
   var signin = function(admin, password) {
     return $http({
       method: 'POST',
@@ -50,6 +50,7 @@ angular.module('jobsearch.services', [])
     })
   };
 
+  // TODO: Use the following methods in adminController
   // Call this upon admin authentication and admin.html page load
   var getLogs = function() {
     return $http({
@@ -70,7 +71,7 @@ angular.module('jobsearch.services', [])
     return $http({
       method: 'POST',
       url: '/api/track',
-      data: {script: script}
+      data: { customScript: script }
     })
     .then(function(res) {
       console.log('Database response: ', res)

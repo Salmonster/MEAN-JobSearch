@@ -1,7 +1,7 @@
 exports = module.exports = {
 
   // Log an uncaught error and then send it to the next route,
-  //   which should be 'exports.errorHandler'.
+  // which should be 'exports.errorHandler'.
   // (The file requiring this function determines the route order.)
   errorLogger: function (error, req, res, next) {
     console.error(error.stack);

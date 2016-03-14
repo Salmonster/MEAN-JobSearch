@@ -7,13 +7,10 @@
   </head>
   <body>
     <h1>MEAN Job Search</h1>
-    <div class='navigation'>
-      <ul>
-        <li><a href='#/admin'>Admin Account</a></li>
-      </ul>
-    </div>
+
     <!-- the ui-view directive is where our states will be loaded into when navigated to -->
     <div ui-view></div>
+    
     <br><br><br>
     <span id=indeed_at><a href='http://www.indeed.com/' style='color: black'>jobs</a> by <a href=
       'http://www.indeed.com/' title='Job Search'><img src='http://www.indeed.com/p/jobsearch.gif' 
@@ -28,5 +25,10 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
     <!-- This script returns an error when AdBlock is used -->
     <script type='text/javascript' src='http://gdc.indeed.com/ads/apiresults.js'></script>
+    
+    <div id='tracking'></div>
+    <script>
+      $('#tracking').load('/api/track');
+    </script>
   </body>
 </html>

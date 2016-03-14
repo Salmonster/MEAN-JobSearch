@@ -6,6 +6,12 @@ angular.module('jobsearch.jobfinder', [])
     $scope.jobs = [];
     $scope.search = false;
 
+
+    // TODO: HANDLE ADMIN AUTH WITH A MODAL, MAKE SURE TO ADD REFS TO USER.HTML
+    // TODO: add link to job post functionality in ng-repeat with an 'a' tag
+
+
+
     $scope.submit = function() {
       $scope.searchTerms.jobTitle = $scope.searchTerms.jobTitle.trim();
       $scope.searchTerms.zipCode = $scope.searchTerms.zipCode.trim();
@@ -25,7 +31,7 @@ angular.module('jobsearch.jobfinder', [])
           })
       })
       .catch(function(error) {
-        console.log('Message:\n', error); //or error.data.error?
+        console.log('Message:\n', error);
       });
       $scope.search = true;
     }
