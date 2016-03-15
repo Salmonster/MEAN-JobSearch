@@ -78,14 +78,20 @@ module.exports = {
   },
 
   getLogs: function(req, res, next) {
-    // Retrieve saved data from SearchLog db
-    findAllSearches()
-      .then(function(results) {
-        res.send(results);
-      })
-      .fail(function(err) {
-        res.status(400).send(err);
-      });
+    var secret = 'Be safe!';
+    var username = jwt.decode(req.cookies.user, secret).admin;
+    if (username === 'eSmith') {
+      // Retrieve saved data from SearchLog db
+      findAllSearches()
+        .then(function(results) {
+          res.send(results);
+        })
+        .fail(function(err) {
+          res.status(400).send(err);
+        });
+    } else {
+      res.sendStatus(400);
+    }
   },
 
   track: function(req, res, next) {

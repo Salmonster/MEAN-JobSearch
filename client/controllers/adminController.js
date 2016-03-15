@@ -17,6 +17,7 @@ angular.module('jobsearch.admin', [])
         })
         .catch(function(err) {
           console.log('Stats display error: ', err);
+          alert('Unable to load search logs. You must log back in.');
         })
     }
     // This function will be called on each item in the ngRepeated array for sorting only
