@@ -43,6 +43,8 @@ angular.module('jobsearch.jobfinder', [])
       ApiCalls.signin($scope.admin, $scope.password)
         .then(function(res) {
           $scope.closeMe();
+          // Normally we'd use a hashed jwt token here
+          localStorage.setItem('authenticated', true);
           $location.path('/admin');
         })
         .catch(function(err) {

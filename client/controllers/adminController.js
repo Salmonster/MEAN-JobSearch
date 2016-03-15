@@ -1,6 +1,11 @@
 angular.module('jobsearch.admin', [])
 
-  .controller('AdminController', ['$rootScope', '$scope', '$http', '$log', 'ApiCalls', function($rootScope, $scope, $http, $log, ApiCalls) { 
+  .controller('AdminController', ['$rootScope', '$scope', '$location', '$http', '$log', 'ApiCalls', function($rootScope, $scope, $location, $http, $log, ApiCalls) { 
+
+    if (localStorage.getItem('authenticated') !== 'true') {
+      $location.path('/');
+      alert('You are not authenticated as an admin. Please log in.');
+    }
 
     $scope.displayStats = function() {
       ApiCalls.getLogs()
