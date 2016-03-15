@@ -14,15 +14,22 @@ module.exports = {
 
   createSearchLog: function(req, res, next) {
     // Adds search criteria and user's IP address into SearchLog database
+    var ipAddress = req.headers['x-forwarded-for'];
+    if (ipAddress) {
+      var list = ipAddress.split(',');
+      ipAddress = list[list.length-1];
+    } else {
+      ipAddress = req.connection.remoteAddress;
+    }
     createSearch({
       searchTerm: req.body.jobTitle,
       zipCode: req.body.zipCode,
       time: new Date(),
-      ipAddress: req.headers['x-forwarded-for']
+      ipAddress: ipAddress
     })
     .then(function() {
       res.status(201);
-      res.send(req.headers['x-forwarded-for']);
+      res.send(ipAddress);
     })
     .catch(function(err) {
       res.status(500);
