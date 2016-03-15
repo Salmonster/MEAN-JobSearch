@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.post('/logs', searchLogController.createSearchLog);
   app.get('/logs', searchLogController.getLogs);
   
-  //For one-time use...
+  // For one-time use...
   // app.post('/admin/signup', searchLogController.signUp);
   
   app.post('/admin', searchLogController.signIn);

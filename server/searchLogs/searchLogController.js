@@ -17,12 +17,11 @@ module.exports = {
       searchTerm: req.body.jobTitle,
       zipCode: req.body.zipCode,
       time: new Date(),
-      ipAddress: req.connection.remoteAddress
+      ipAddress: req.headers['x-forwarded-for']
     })
     .then(function() {
       res.status(201);
-      console.log("req.connection.remoteAddress: ", req.connection.remoteAddress);
-      res.send(req.connection.remoteAddress);
+      res.send(req.headers['x-forwarded-for']);
     })
     .catch(function(err) {
       res.status(500);
