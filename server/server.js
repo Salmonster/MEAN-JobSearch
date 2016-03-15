@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
 var Path = require('path');
 var helpers = require('./helpers.js');
 var app = express();
@@ -8,12 +9,10 @@ var app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
-// Set up express formatting and http reporting.
+// Set up express formatting, http reporting, & cookie parsing
 app.use(bodyParser.json());
-// app.use(require('body-parser').urlencoded({
-//   extended: true
-// }));
 app.use(morgan('dev'));
+app.use(cookieParser());
 
 // Redirect requests for local files to the 'client' directory
 var assetFolder = Path.resolve(__dirname, '../client');

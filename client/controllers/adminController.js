@@ -32,6 +32,7 @@ angular.module('jobsearch.admin', [])
         })
         .catch(function(err) {
           console.log('Script update error: ', err);
+          alert('Script update failed. You may need to log back in.');
         })
     }
 

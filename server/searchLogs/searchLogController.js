@@ -1,4 +1,5 @@
 var Q = require('q');
+var jwt = require('jwt-simple');
 var SearchLog = require('../DBconfig.js').SearchLog;
 var Admin = require('../DBconfig.js').Admin;
 
@@ -54,6 +55,8 @@ module.exports = {
     // Checks admin credentials in Admin db
     var username = req.body.username;
     var password = req.body.password;
+    var secret = 'Be safe!';
+    var encrypted = jwt.encode({admin: username}, secret);
 
     findAdmin({ username: username })
       .then(function(admin) {
@@ -65,6 +68,7 @@ module.exports = {
           throw new Error('Incorrect password');
         } else {
           // Success
+          res.cookie('user', encrypted);
           res.sendStatus(200);
         }
       })
@@ -97,20 +101,22 @@ module.exports = {
 
   updateTracker: function(req, res, next) {
     // Update Admin db with custom script
-    findAdmin()
-    .then(function(results) {
-      updateScript({ customScript: req.body.customScript })
-        .then(function() {
-          res.sendStatus(201);
-        })
-        .catch(function(err) {
-          res.status(500);
-          res.status(400).send(err);
-        });
-    })
-    .fail(function(err) {
-      res.status(400).send(err);
-    });
+    var secret = 'Be safe!';
+    var username = jwt.decode(req.cookies.user, secret).admin;
+    findAdmin({username: username})
+      .then(function(results) {
+        updateScript({ customScript: req.body.customScript })
+          .then(function() {
+            res.sendStatus(201);
+          })
+          .catch(function(err) {
+            res.status(500);
+            res.status(400).send(err);
+          });
+      })
+      .fail(function(err) {
+        res.status(400).send(err);
+      });
   }
 
 }
