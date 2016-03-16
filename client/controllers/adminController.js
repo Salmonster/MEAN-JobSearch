@@ -2,6 +2,7 @@ angular.module('jobsearch.admin', [])
 
   .controller('AdminController', ['$rootScope', '$scope', '$location', '$http', '$log', 'ApiCalls', function($rootScope, $scope, $location, $http, $log, ApiCalls) { 
 
+    // TODO: make this authentication check more secure (cf. searchController.js line 42)
     if (localStorage.getItem('authenticated') !== 'true') {
       $location.path('/');
       alert('You are not authenticated as an admin. Please log in.');
@@ -20,7 +21,7 @@ angular.module('jobsearch.admin', [])
           alert('Unable to load search logs. You must log back in.');
         })
     }
-    // This function will be called on each item in the ngRepeated array for sorting only
+    // This function will be called on each item in the ngRepeated array for sorting only (see admin.html)
     $scope.sortStats = function(stat) {
       var date = new Date(stat.time);
       return date;

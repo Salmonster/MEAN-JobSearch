@@ -6,11 +6,6 @@ angular.module('jobsearch.jobfinder', [])
     $scope.jobs = [];
     $scope.search = false;
 
-
-    // TODO: add links to job post listings in ng-repeat with an 'a' tag
-
-
-
     $scope.submit = function() {
       $scope.searchTerms.jobTitle = $scope.searchTerms.jobTitle.trim();
       $scope.searchTerms.zipCode = $scope.searchTerms.zipCode.trim();
@@ -43,7 +38,7 @@ angular.module('jobsearch.jobfinder', [])
       ApiCalls.signin($scope.admin, $scope.password)
         .then(function(res) {
           $scope.closeMe();
-          // Normally we'd use a hashed jwt token here
+          // TODO: use a jwt token here (cf. adminController.js line 6)
           localStorage.setItem('authenticated', true);
           $location.path('/admin');
         })

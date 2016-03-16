@@ -14,11 +14,14 @@ module.exports = {
 
   createSearchLog: function(req, res, next) {
     // Adds search criteria and user's IP address into SearchLog database
+
+    // The end client's IP address will be accessible via this header when deployed on Heroku...
     var ipAddress = req.headers['x-forwarded-for'];
     if (ipAddress) {
       var list = ipAddress.split(',');
       ipAddress = list[list.length-1];
     } else {
+      // ... and via this method when running on localhost
       ipAddress = req.connection.remoteAddress;
     }
     createSearch({
